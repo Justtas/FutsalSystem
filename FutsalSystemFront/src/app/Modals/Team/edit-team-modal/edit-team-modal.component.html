@@ -1,0 +1,19 @@
+<mat-dialog-content class="dialogBox">
+  <h1>Redaguoti komandą</h1>
+  <form [formGroup]="bioSection" (ngSubmit)="updateTeamData()">
+    <div class="modalBox">
+      <div formGroupName="Title">
+        <label for="exampleInputEmail1"><b>Komandos pavadinimas</b></label>
+        <input type="text" class="form-control" id="exampleInputEmail1" formControlName="title"
+          aria-describedby="emailHelp" placeholder="Įveskite komandos pavadinimą..">
+      </div>
+      <div>
+        <label class="inputLabel" for="exampleInputEmail1"><b>Komandos logotipas</b><br></label>
+        <input type="file" class="form-control" id="imagePath" placeholder="Pasirinkite nuotrauką.."
+          (change)="handleFileSelect($event)">
+      </div>
+      <button class="submitButton" (click)="openEditSuccessfulBar('Komanda buvo sėkmingai pakeista!', 'Gerai')"
+        mat-raised-button type="submit" color="primary">Išsaugoti</button>
+    </div>
+  </form>
+</mat-dialog-content>

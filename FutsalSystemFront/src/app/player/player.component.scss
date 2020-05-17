@@ -1,0 +1,89 @@
+h1 {
+    color: white;
+}
+
+.grid {
+    width: 80%;
+    margin-top: 8vh;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+    background: rgba(54, 48, 74, 0.8);
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 70vh;
+    padding: 24px 32px;
+}
+
+.playerImage {
+    padding: 8px 16px;
+    text-align: center;
+    height: 100%;
+}
+
+img {
+    padding: 3px;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+
+    color: white;
+    height: 40vh;
+}
+.playerNumber {
+    margin-top: 2vh;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.playerName {
+    color:white;
+    font-size: 2rem;
+}
+
+.playerStatistic {
+    padding: 16px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playerStatisticTitle {
+    margin-bottom: 5vh;
+    margin-top: 2vh;
+    font-size: 2rem;
+    color: white;
+    font-weight: 500;
+}
+.statRow{
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.statHeader {
+    margin-bottom: 0;
+    height: 100%;
+    color:white;
+    font-size: 2rem;
+    font-weight: 450;
+}
+
+.statData {
+    margin-bottom: 0;
+    height: 100%;
+    color: white;
+    font-size: 2rem;
+}
+.border {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: 2vw;
+    margin-right: 5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}

@@ -1,0 +1,38 @@
+<mat-dialog-content class="dialogBox">
+    <h1>Pridėti rungtynių įvykį</h1>
+    <form [formGroup]="bioSection" (ngSubmit)="updateMatchEventData()">
+        <div class="modalBox">
+            <div formGroupName="Minute">
+                <label for="exampleInputEmail1"><b>Minutė</b></label>
+                <input type="number" class="form-control" id="minute" formControlName="minute"
+                    aria-describedby="emailHelp" placeholder="Įveskite įvykio minutę">
+            </div>  
+            <div style="display: flex; flex-direction: column;">
+                <label><b>Žaidėjas</b></label>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="selectedPlayer" [ngModelOptions]="{standalone: true}" name="player" required>
+                        <mat-option *ngFor="let player of teamPlayers" [value]="player">
+                            #{{player.number}} {{player.firstName}} {{player.lastName}} ({{player.teamName}})
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <label><b>Įvykio tipas</b></label>
+                <mat-form-field>
+                    <mat-select placeholder="Įvykio tipas" [(ngModel)]="selectedEvent" [ngModelOptions]="{standalone: true}">
+                        <mat-option [value]="0">Įvartis</mat-option>
+                        <mat-option [value]="1">Įvartis į savus vartus</mat-option>
+                        <mat-option [value]="2">6m baudinys</mat-option>
+                        <mat-option [value]="3">10m baudinys</mat-option>
+                        <mat-option [value]="4">Geltona kortelė</mat-option>
+                        <mat-option [value]="5">Raudona kortelė</mat-option>
+                        <mat-option [value]="6">Nepataikytas baudinys</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>             
+            <button class="submitButton" (click)="openCreateSuccessfulBar('Įvykis buvo sėkmingai pridėtas!', 'Gerai')"
+                mat-raised-button type="submit" color="primary">Pridėti</button>
+        </div>
+    </form>
+</mat-dialog-content>

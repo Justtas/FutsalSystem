@@ -1,0 +1,17 @@
+.container {
+    //position: relative;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .container{
+        margin-left: 0;
+        margin-right:0;
+    }
+}
+
+.mainContent {
+    background-image: url('../assets/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

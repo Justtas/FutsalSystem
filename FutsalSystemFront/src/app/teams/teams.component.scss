@@ -1,0 +1,76 @@
+.mat-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    height: 100px;
+    cursor: pointer;
+}
+.teamsContainer {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+
+    .teamCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 65%;
+        margin: 2rem;
+        padding: 1rem;
+        color: white;
+        min-height: 270px;
+        background-color: rgb(48, 49, 51, 0.5);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+
+        .teamCardImage {
+            flex-grow: 3;
+
+            img {
+                height: 128px;
+                width: auto;
+            }
+        }
+
+        .teamCardTitle {
+            font-size: 1.5rem;
+            flex-grow: 1;
+            text-align: center;
+            height: 40%;
+        }
+    }
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.add-button-wrapper {
+    z-index: 10;
+    padding: 16px;
+    height: 80px;
+    width: 80px;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    border-radius: 50%;
+    border: 0px;
+    background-color: rgb(48, 49, 51);
+    box-shadow: 0px 0px 10px rgba(252, 252, 255, 0.5);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+
+    .add-button {
+        height: 100%;
+        width: 100%;
+        background-image: url("../../assets/plus.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}

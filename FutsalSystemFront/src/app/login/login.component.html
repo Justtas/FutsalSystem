@@ -1,0 +1,20 @@
+<div class="box">
+    <mat-dialog-content class="dialogBox">
+        <h1>Prisijungti</h1>
+        <form [formGroup]="bioSection" (ngSubmit)="login()">
+            <div class="modalBox">
+                <div formGroupName="Username">
+                    <label><b>Administratoriaus vardas</b></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="username"
+                        aria-describedby="emailHelp" placeholder="Įveskite administratoriaus vardą">
+                </div>
+                <div formGroupName="Password">
+                    <label><b>Slaptažodis</b></label>
+                    <input type="password" class="form-control" id="exampleInputEmail1" formControlName="password"
+                        aria-describedby="emailHelp" placeholder="Įveskite slaptažodį">
+                </div>
+                <button class="submitButton" mat-raised-button type="submit" color="primary">Prisijungti</button>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>

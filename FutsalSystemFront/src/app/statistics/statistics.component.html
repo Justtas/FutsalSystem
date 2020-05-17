@@ -1,0 +1,116 @@
+<body>
+    <div class="spinner" *ngIf="notLoaded">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="mainTable" *ngIf="!notLoaded">
+        <thead>
+            <tr class="tableRow" style="padding-right: 5px;">
+                <th style="width: 5%;">Vieta</th>
+                <th style="width: 15%;">Komanda</th>
+                <th style="width: 10%;">Įmušti įvarčiai</th>
+                <th style="width: 10%;">Praleisti įvarčiai</th>
+                <th style="width: 10%;">Įvarčių skirtumas</th>
+                <th style="width: 10%;">Žaista rungtynių</th>
+                <th style="width: 10%;">Laimėtos rungtynės</th>
+                <th style="width: 10%;">Pralaimėtos rungtynės</th>
+                <th style="width: 10%;">Sulygiuotos rungtynės</th>
+                <th style="width: 10%;">Taškai</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <div>
+                <tr class="tableRowContent" *ngFor="let element of teams; let i = index"
+                    (click)="onTeamRowClick(element)">
+                    <td style="width: 5%;">{{i+1}}</td>
+                    <td style="width: 15%;">{{element.title}}</td>
+                    <td style="width: 10%;">{{element.goalsFor}}</td>
+                    <td style="width: 10%;">{{element.goalsAgainst}}</td>
+                    <td style="width: 10%;">{{element.goalsDifference}}</td>
+                    <td style="width: 10%;">{{element.matchesPlayed}}</td>
+                    <td style="width: 10%;">{{element.matchesWon}}</td>
+                    <td style="width: 10%;">{{element.matchesLost}}</td>
+                    <td style="width: 10%;">{{element.matchesDrawn}}</td>
+                    <td style="border: none; width: 10%;">{{element.points}}</td>
+                </tr>
+            </div>
+        </tbody>
+    </div>
+
+    <!-- Geltonos ir raudonos korteles -->
+    <div class="grid" *ngIf="!notLoaded">
+        <div class="playersCardsTable">
+            <div class="playersCardsTitle">
+                Geltonos kortelės
+            </div>
+            <thead>
+                <tr class="tableRow" style="padding-right: 5px;">
+                    <th style="width: 70%;">Žaidėjas</th>
+                    <th style="width: 30%;">Geltonos kortelės</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <div>
+                    <tr class="tableRowContent" *ngFor="let player of playersByYellowCards" (click)="onPlayerRowClick(player)">
+                        <td style="width: 70%;">
+                            {{player.firstName}} {{player.lastName}}
+                        </td>
+                        <td style="width: 30%;">
+                            {{player.yellowCardsCount}}
+                        </td>
+                    </tr>
+                </div>
+            </tbody>
+        </div>
+        <div class="playersCardsTable">
+            <div class="playersCardsTitle">
+                Raudonos kortelės
+            </div>
+            <thead>
+                <tr class="tableRow" style="padding-right: 5px;">
+                    <th style="width: 70%;">Žaidėjas</th>
+                    <th style="width: 30%;">Raudonos kortelės</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <div>
+                    <tr class="tableRowContent" *ngFor="let player of playersByRedCards" (click)="onPlayerRowClick(player)">
+                        <td style="width: 70%;">
+                            {{player.firstName}} {{player.lastName}}
+                        </td>
+                        <td style="width: 30%;">
+                            {{player.redCardsCount}}
+                        </td>
+                    </tr>
+                </div>
+            </tbody>
+        </div>
+        <div class="playersGoalsTable">
+            <div class="playersGoalsTitle">
+                Rezultatyviausi žaidėjai
+            </div>
+            <thead>
+                <tr class="tableRow" style="padding-right: 10px;">
+                    <th style="width: 80%;">Žaidėjas</th>
+                    <th style="width: 20%;">Įvarčiai</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <div>
+                    <tr class="tableRowContent" *ngFor="let player of playersByGoals" (click)="onPlayerRowClick(player)">
+                        <td style="width: 80%;">
+                            {{player.firstName}} {{player.lastName}}
+                        </td>
+                        <td style="width: 20%;">
+                            {{player.goals}}
+                        </td>
+                    </tr>
+                </div>
+            </tbody>
+
+        </div>
+    </div>
+</body>

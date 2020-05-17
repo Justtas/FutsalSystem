@@ -1,0 +1,50 @@
+<div>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button fxShow="true" fxHide.gt-sm (click)="toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Salės futbolo lyga</span>
+            <span class="menu-spacer"></span>
+            <div class="navbarButtonsContainer" fxShow="true" fxHide.lt-md *ngIf="!isAdmin"> 
+                <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+                <a routerLink="/home" mat-button>Pagrindinis</a>
+                <a routerLink="/teams" mat-button>Komandos</a>
+                <a routerLink="/matches" mat-button>Rungtynės</a>
+                <a routerLink="/players" mat-button>Žaidėjai</a>
+                <a routerLink="/statistics" mat-button>Statistika</a>
+            </div>
+            <div class="navbarButtonsContainer" fxShow="true" fxHide.lt-md *ngIf="isAdmin">
+                <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+                <a routerLink="/home" mat-button>Pagrindinis</a>
+                <a routerLink="/teams" mat-button>Komandos</a>
+                <a routerLink="/matches" mat-button>Rungtynės</a>
+                <a routerLink="/players" mat-button>Žaidėjai</a>
+                <a routerLink="/statistics" mat-button>Statistika</a>
+                <!-- <a routerLink="#" (click)="logout()" mat-button>Atsijungti</a> -->
+                <a href="http://localhost:4200/home" (click)="logout()" mat-button>Atsijungti</a>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div id="mobile_navigation" *ngIf="!isAdmin" (click)="toggle()">
+        <ul>
+            <li routerLink="/home" mat-list-item> Pagrindinis</li>
+            <li routerLink="/teams" mat-list-item>Komandos</li>
+            <li routerLink="/matches" mat-list-item>Rungtynės</li>
+            <li routerLink="/players" mat-list-item>Žaidėjai</li>
+            <li routerLink="/statistics" mat-list-item>Statistika</li>
+        </ul>
+        
+    </div>
+    <div id="mobile_navigation" *ngIf="isAdmin" (click)="toggle()">
+        <ul>
+            <li routerLink="/home" mat-list-item> Pagrindinis</li>
+            <li routerLink="/teams" mat-list-item>Komandos</li>
+            <li routerLink="/matches" mat-list-item>Rungtynės</li>
+            <li routerLink="/players" mat-list-item>Žaidėjai</li>
+            <li routerLink="/statistics" mat-list-item>Statistika</li>
+            <li routerLink="#" (click)="logout()" mat-list-item>Atsijungti</li>
+        </ul>
+    </div>
+</div>

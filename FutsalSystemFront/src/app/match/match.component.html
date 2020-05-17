@@ -1,0 +1,71 @@
+<body>
+    <div class="spinner" *ngIf="notLoaded">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!match.isFinished && isAdmin && !notLoaded" class="addEvent-button-wrapper"
+        (click)="openMatchEventCreateDialog(match)">
+        <div class="addEvent-button"></div>
+    </div>
+    <div *ngIf="isAdmin" class="delete-button-wrapper" (click)="openDeleteConfirmationDialog()">
+        <div class="delete-button"></div>
+    </div>
+
+    <div class="grid" *ngIf="!notLoaded">
+        <div class="teamLogo">
+            <img src="{{homeTeam.imagePath}}" alt="">
+        </div>
+        <div class="vsText">
+            {{match.homeTeamScore}} : {{match.awayTeamScore}}
+        </div>
+        <div class="teamLogo">
+            <img src="{{awayTeam.imagePath}}" alt="">
+        </div>
+    </div>
+    <div class="titlesGrid">
+        <div class="teamTitle">
+            {{homeTeam.title}}
+        </div>
+        <div></div>
+        <div class="teamTitle">
+            {{awayTeam.title}}
+        </div>
+
+    </div>
+
+
+    <div class="noEventsText" *ngIf="matchEvents.length == 0 && !match.isFinished && !notLoaded">
+        Rungtynėms nėra pridėtų įvykių.
+    </div>
+    <div class="noEventsText" *ngIf="matchEvents.length == 0 && match.isFinished && !notLoaded">
+        Rungtynėse baigėsi be įvykių.<br>
+    </div>
+    <span *ngIf="match.isFinished && !notLoaded" class="confirmedMatch">
+        PATVIRTINTA
+    </span><br>
+    <div *ngIf="matchEvents.length > 0 && !notLoaded" class="mainTable">
+        <thead>
+            <tr class="tableRow">
+                <th> Minutė </th>
+                <th> Žaidėjo vardas </th>
+                <th> Komanda </th>
+                <th> Įvykio tipas </th>
+                <th *ngIf="!match.isFinished"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="tableRowContent" *ngFor="let element of matchEvents; let i = index">
+                <td> {{element.minute}} </td>
+                <td> {{element.playerName}} </td>
+                <td> {{element.teamName}}</td>
+                <td> {{matchEventNames[element.eventType]}} </td>
+                <td *ngIf="!match.isFinished">
+                    <img class="adminButton" src="../../assets/trash.svg" alt=""
+                        (click)="openMatchEventDeleteDialog(element, i, $event)">
+                </td>
+            </tr>
+        </tbody>
+    </div>
+    <button class="confirmButton" *ngIf="!match.isFinished && !notLoaded && isAdmin"
+        (click)="onUpdateMatchEventsClick()">Patvirtinti rungtynes</button>
+</body>
