@@ -1,2 +1,2 @@
 # FutsalSystem
-Bakalaurinis darbas "Salės futbolo lygos informacinė sistema"
+"Salės futbolo lygos informacinė sistema"
