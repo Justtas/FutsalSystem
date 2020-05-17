@@ -1,0 +1,61 @@
+<body style="padding: 0 15px 0">
+    <div *ngIf="isAdmin" class="add-button-wrapper" (click)="openAnnouncementCreateDialog()">
+        <div class="add-button"></div>
+    </div>
+    <div class="spinner" *ngIf="notLoaded">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!notLoaded" class="gridas">
+        <div>
+            <div class="icon-container">
+                <div class="icon-svg">
+                    <img src="../../assets/news.svg" alt="">
+                </div>
+                <div class="icon-text">
+                    <span class="icon-title">Naujienos</span>
+                </div>
+            </div>
+            <div class="news">
+                <div style="color:white;" *ngIf="announcements.length == 0">
+                    Naujienų nėra.
+                </div>
+                <div *ngIf="announcements.length > 0">
+                    <div *ngFor="let element of announcements; let i = index">
+                        <mat-card>
+                            <img *ngIf="isAdmin" class="adminButton"  src="../../assets/trash.svg" alt="" (click)="openAnnouncementDeleteDialog(element, i, $event)">    
+                            <img *ngIf="isAdmin" class="adminButton" style="margin-right: 0.5rem;" src="../../assets/pencil.svg" alt="" (click)="openAnnouncementEditDialog(element, $event)">
+                            <mat-card-title> {{element.title}}</mat-card-title>
+                            <mat-card-subtitle>{{element.creationDate | date:'yyyy-MM-dd'}}</mat-card-subtitle>
+                            <mat-card-content>{{element.message}}</mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="tableImage">
+                <img style="width: 108px; height: 108px;" src="../../assets/cup.svg" alt="">
+            </div>
+            <div class="mainTable" style="width: 100%;">
+                <thead>
+                    <tr class="tableRow">
+                        <th>Vieta</th>
+                        <th>Pavadinimas</th>
+                        <th>Įvarčių skirtumas</th>
+                        <th style="border: none;">Taškai</th>
+                    </tr>
+                </thead>
+                <tbody style="width: 100%;">
+                    <tr class="tableRowContent" *ngFor="let element of teams; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{element.title}}</td>
+                        <td>{{element.goalsDifference}}</td>
+                        <td style="border: none;">{{element.points}}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+
+
+</body>

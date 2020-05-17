@@ -1,0 +1,16 @@
+<body>
+    <div *ngIf="isAdmin" class="add-button-wrapper" (click)="openTeamCreateDialog()">
+        <div class="add-button"></div>
+    </div>
+    <div class="spinner" *ngIf="notLoaded">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="row teamsContainer">
+        <div (click)="onTeamsRowClick(element)" class="teamCard" *ngFor="let element of dataSource"> 
+            <div class="teamCardImage"> 
+                <img src="{{element.imagePath}}" alt="">    
+            </div>
+            <div class="teamCardTitle"> {{element.title}} </div>
+        </div>
+    </div>
+</body>

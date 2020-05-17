@@ -1,0 +1,71 @@
+<div *ngIf="isAdmin" class="add-button-wrapper" (click)="openPlayerCreateDialog()">
+    <div class="add-button"></div>
+</div>
+<div class="spinner" *ngIf="notLoaded">
+    <mat-spinner></mat-spinner>
+</div>
+<div class="mainTable" *ngIf="!notLoaded">
+    <thead>
+        <tr *ngIf="!isAdmin" class="tableRow" style="padding-right: 5px;">
+            <th style="width: 40%;">Vardas pavardė</th>
+            <th style="width: 25%;">Gimimo data</th>
+            <th style="width: 10%;">Numeris</th>
+            <th style="width: 25%;">Komanda</th>
+        </tr>
+        <tr *ngIf="isAdmin" class="tableRow" style="padding-right: 5px;">
+            <th style="width: 30%;">Vardas pavardė</th>
+            <th style="width: 20%;">Gimimo data</th>
+            <th style="width: 10%;">Numeris</th>
+            <th style="width: 20%;">Komanda</th>
+            <th style="width: 20%;">
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- <tr *ngFor="let item of dataSource" (click)="onMatchRowClick(item)"> -->
+        <div *ngIf="!isAdmin">
+            <tr class="tableRowContent" *ngFor="let item of fullInfoCoppied" (click)="onPlayerRowClick(item)">
+                <td style="width: 40%;">{{item.name}} {{item.lastname}}</td>
+                <td style="width: 25%;">
+                    {{item.dateOfBirth | date:'yyyy-MM-dd'}}
+                </td>
+                <td style="width: 10%;">
+                    {{item.number}}
+                </td>
+                <td style="width: 25%;">
+                    {{item.teamName}}
+                </td>
+            </tr>
+        </div>
+        <div *ngIf="isAdmin">
+            <tr class="tableRowContent" *ngFor="let item of fullInfoCoppied; let i = index" (click)="onPlayerRowClick(item)">
+                <td style="width: 30%;">{{item.name}} {{item.lastname}}</td>
+                <td style="width: 20%;">
+                    {{item.dateOfBirth | date:'yyyy-MM-dd'}}
+                </td>
+                <td style="width: 10%;">
+                    {{item.number}}
+                </td>
+                <td style="width: 20%;">
+                    {{item.teamName}}
+                </td>
+                <td *ngIf="isAdmin" style="width: 20%;">
+                    <img class="adminButton" src="../../assets/pencil.svg" alt="" (click)="openPlayerEditDialog(item, $event)">
+                    <img class="adminButton" src="../../assets/trash.svg" alt="" (click)="openPlayerDeleteDialog(item, i, $event)">
+                </td>
+            </tr>
+        </div>
+
+    </tbody>
+    <div class="searchBar">
+        <th style="width: 30%;"></th>
+        <th style="width: 20%;"></th>
+        <th style="width: 10%;"></th>
+        <th style="width: 20%;"></th>
+        <th style="width: 20%;">
+            <input #myInput class="searchInput" type="text" placeholder="Ieškoti:" [(ngModel)]="searchTeam"
+                (input)="filterItem(myInput.value)">
+        </th>
+    </div>
+</div>

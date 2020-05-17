@@ -1,0 +1,115 @@
+<body>
+    <div *ngIf="isAdmin" class="edit-button-wrapper" (click)="openTeamEditDialog(team)">
+        <div class="edit-button"></div>
+    </div>
+    <div *ngIf="isAdmin" class="delete-button-wrapper" (click)="openDeleteConfirmationDialog()">
+        <div class="delete-button"></div>
+    </div>
+    <div class="spinner" *ngIf="notLoaded">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div>
+        <div class="teamImage">
+            <img src="{{team.imagePath}}" alt="">
+            <p class="teamTitle">{{team.title}}</p>
+        </div>
+        <div class="grid">
+            <div class="teamStatistic">
+                <p class="teamStatisticTitle">Komandos statistika</p>
+                <div class="statRow">
+                    <div class="border">
+                        <p class="statHeader">Žaistos rungtynės:</p>
+                        <p class="statData">{{team.matchesPlayed}}</p>
+                    </div>
+                </div>
+                <div class="statRow">
+                    <div class="border">
+                        <p class="statHeader">Laimėtos rungtynės:</p>
+                        <p class="statData">{{team.matchesWon}}</p>
+                    </div>
+                </div>
+                <div class="statRow">
+                    <div class="border">
+                        <p class="statHeader">Pralaimėtos rungtynės:</p>
+                        <p class="statData">{{team.matchesLost}}</p>
+                    </div>
+                </div>
+                <div class="statRow">
+                    <div class="border">
+                        <p class="statHeader">Sulygiuotos rungtynės:</p>
+                        <p class="statData">{{team.matchesDrawn}}</p>
+                    </div>
+                </div>
+                <div class="statRow">
+                    <div class="border">
+                        <p class="statHeader">Įmušti įvarčiai:</p>
+                        <p class="statData">{{team.goalsFor}}</p>
+                    </div>
+                </div>
+                <div class="statRow">
+                    <div class="border">
+                        <p class="statHeader">Praleisti įvarčiai:</p>
+                        <p class="statData">{{team.goalsAgainst}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teamPlayersTable">
+                <div class="teamPlayersTitle">
+                    Komandos žaidėjai
+                </div>
+                <div *ngIf="dataSource.length == 0">
+                    <h4 style="color: white">Nėra priskirtų žaidėjų šiai komandai.</h4>
+                </div>
+                <thead *ngIf="dataSource.length > 0">
+                    <tr class="tableRow" style="padding-right: 5px;">
+                        <th style="width: 25%;">Nr.</th>
+                        <th style="width: 40%;">Vardas, pavardė</th>
+                        <th style="width: 35%;">Gimimo data</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <div>
+                        <tr class="tableRowContent" *ngFor="let item of dataSource" (click)="onPlayerRowClick(item)">
+                            <td style="width: 25%;">
+                                {{item.number}}
+                            </td>
+                            <td style="width: 40%;">
+                                {{item.firstName}} {{item.lastName}}
+                            </td>
+                            <td style="width: 35%;">
+                                {{item.dateOfBirth | date:'yyyy-MM-dd'}}
+                            </td>
+                        </tr>
+                    </div>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngIf="!notLoaded">
+        <button mat-button (click)="openDeleteConfirmationDialog()">Ištrinti komandą</button>
+        <button mat-button (click)="openTeamEditDialog(team)">Redaguoti komandą</button>
+    </div> -->
+</body>
+
+<!-- <div class="playersList" *ngIf="dataSource.length > 0">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef> Nr. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Vardas, pavardė </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.firstName}} {{ element.lastName }}
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dateOfBirth">
+            <mat-header-cell *matHeaderCellDef> Gim. data </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dateOfBirth | date:'yyyy-MM-d'}}
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div> -->
