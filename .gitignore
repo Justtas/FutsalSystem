@@ -204,4 +204,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-EEP/EEP.Employees.UI/.vscode/launch.json
+.gitignore
